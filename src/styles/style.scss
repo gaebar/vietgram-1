@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Muli|Open+Sans&display=swap');
+@import 'chats/chatIndex';
+@import 'chats/chatShow';
+@import 'common/footer';
+@import 'common/navbar';
+@import 'auth/login';
+@import 'auth/profile';
+@import 'gems/gems';
+@import 'gems/gemsShow';
+@import 'gems/gemEdit';
+@import 'auth/login';
+@import 'auth/profile';
+@import 'auth/register';
+
+
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+
+* {
+  font-family: $title;
+  font-weight: bold;
+  p, .text {
+    font-family: $text;
+  }
+}
+
+label:hover {
+  text-decoration: none;
+  color: $yellow;
+}
+
+.form-input {
+  label {
+    font-family: $text;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $grey;
+}
+a:hover {
+  text-decoration: none;
+  color: $yellow;
+}
+
+a:visited {
+  text-decoration: none;
+  color: $grey;
+}
+
+a:visited:hover {
+  text-decoration: none;
+  color: $yellow;
+}

@@ -1,0 +1,43 @@
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+
+.gemshow {
+  margin:30px 10px;
+  .btn-link {
+    color: $yellow;
+  }
+}
+
+.gemshowimage {
+  height: auto;
+  width: 50vw;
+  transform: scale(1);
+}
+
+.gem-likes {
+  display: flex;
+  align-items: center;
+  p {
+    margin-top: 20px;
+  }
+}
+
+.gem-comment {
+  background-color: #f5f5f5;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  .user-comment {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .btn-link {
+    color: $yellow;
+  }
+}

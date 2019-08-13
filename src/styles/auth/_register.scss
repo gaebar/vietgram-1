@@ -1,0 +1,47 @@
+$grey: #4d4d4d;
+$yellow: goldenrod;
+
+.registersection {
+  text-align: center;
+  background-image: url("https://cdn.holidayguru.ie/wp-content/uploads/2018/01/Halong-Bay-iStock_73309217_XLARGE-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 120vh;
+}
+
+.registercolumn {
+    background: white;
+    border: 50px;
+    padding: 30px;
+    /* float: right; */
+    margin: 75px 51px;
+}
+.form-input {
+    margin: 10px auto;
+    background: #fafafa;
+}
+
+.login-form {
+    margin: 20px;
+}
+.avatar-lg {
+  margin: 10px;
+}
+
+.badge.avatar::after {
+  background: white;
+}
+
+.btn.btn-primary {
+  background-color: white;
+  text-decoration: none;
+  color: $yellow;
+  border: 1px solid $yellow;
+}
+.btn.btn-primary:hover {
+  background-color: $yellow;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+}

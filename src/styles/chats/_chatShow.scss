@@ -1,0 +1,103 @@
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+.chat-show {
+  margin: 50px 150px;
+  .panel {
+    border-radius: 10px;
+    padding: 30px;
+    height: 90vh;
+    flex: 0 0 auto;
+    .panel-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      overflow-anchor: auto;
+    }
+    .panel-footer, .panel-header {
+      flex: 0 0 auto;
+      position: sticky;
+    }
+    form.input-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .chat-message {
+    margin: 10px;
+    padding: 10px;
+    .tile-subtitle {
+      width: 60%;
+      background-color: #f0f0f0;
+      border-radius: 10px;
+      padding: 20px;
+    }
+  }
+  .user-message {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    text-align: right;
+    .tile-content {
+      margin-right: 10px;
+    }
+    .tile-title {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+      small {
+        margin-right: 10px;
+        margin-top: 2px;
+      }
+    }
+    .user-flex {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row-reverse;
+    }
+    .user-subtitle {
+      width: 60%;
+      background-color: $yellow;
+      color:white;
+      border-radius: 10px;
+      padding: 20px;
+    }
+  }
+}
+// emojii
+span.add-emoji-button {
+  position: absolute;
+  right: 60px;
+  cursor: pointer;
+  font-size: 17px;
+  width: 23px;
+  height: 24px;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 100;
+}
+span.add-emoji-button:hover {
+  background: #4d4d4d;
+}
+.emojipicker-container {
+  position: absolute;
+  right: 33px;
+  margin-top: -468px;
+}
+.message-btn {
+  border: 1px solid $yellow;
+  color: $yellow;
+  font-size: 20px;
+}
+.message-btn:hover {
+  border: 1px solid white;
+  color: white;
+  background: $yellow;
+}

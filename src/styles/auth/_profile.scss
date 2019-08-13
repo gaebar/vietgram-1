@@ -1,0 +1,102 @@
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+
+.user-page {
+  h2 {
+    font-style: $title-size;
+  }
+}
+
+.user-header {
+  padding: 70px;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: 20% 0;
+  border-radius: 50%;
+  margin-left: 70px;
+}
+
+.user-info {
+  display: flex;
+  a.followers-btn {
+    padding: 10px 0px;
+    text-decoration: none;
+    color: $grey;
+    display: flex;
+    font-size: $paragraph-size;
+  }
+  a:hover {
+    color: $yellow;
+  }
+  p {
+    padding-top: 10px;
+    margin-left: 25px;
+    color: $grey;
+    font-size: $paragraph-size;
+  }
+  .chip {
+    color: $grey;
+  }
+}
+
+.profile-nav {
+  .col-5 {
+    text-align: center;
+    margin: 20px;
+    a {
+      text-decoration: none;
+      color: $grey;
+      font-size: $paragraph-size;
+    }
+    a:hover {
+      color: $yellow;
+    }
+  }
+}
+
+.user-top {
+  display: flex;
+}
+
+.follow-button {
+  margin: 8px 0px 0px 30px;
+  color: $grey;
+  border: 2px solid $grey;
+  border-radius: 5px;
+}
+.follow-button:hover {
+  color: $yellow;
+  border: 2px solid $yellow;
+  background-color: white;
+}
+
+.user-gems {
+  padding: 0px 70px 70px 70px;
+  .gems-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  h3 {
+    margin-top: 50px;
+  }
+  img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 20px;
+    transition: transform .5s;
+  }
+  img:hover {
+    transform: scale(1.05);
+  }
+}

@@ -1,0 +1,54 @@
+$title: 'Muli', sans-serif;
+$text: 'Open Sans', sans-serif;
+$yellow: goldenrod;
+$grey: #4d4d4d;
+$title-size: 30px;
+$subtitle-size: 28px;
+$subtitle-second-size: 22px;
+$paragraph-size: 18px;
+
+.gems-index {
+  .bg-warning:hover {
+    color: white
+  }
+}
+
+.gems-nav {
+  padding: 40px 50px;
+  .filter {
+    padding-top: 5px;
+    label.chip {
+      margin-right: 15px;
+      padding: 15px;
+    }
+  }
+  .float-right {
+    color: $grey;
+    border: 1px solid $grey;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  .float-right:hover {
+    color: $yellow;
+    border: 1px solid $yellow;
+    background-color: white;
+  }
+}
+
+.gems-background {
+  background-color: #f5f5f5;
+  padding: 50px;
+}
+
+.gem-card {
+  border-radius: 5px;
+  margin: 10px 0px;
+  color: $grey;
+  height: 390px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  .gem-card:hover {
+    box-shadow: 5px 0px 20px 5px #dbdbdb;
+  }
+}

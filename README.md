@@ -1,5 +1,5 @@
-# VietGram
-https://vietgram-ga.herokuapp.com/
+# Vietgram
+https://viet-gram.herokuapp.com/
 
 Technologies Used:
 

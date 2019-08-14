@@ -3,7 +3,7 @@ $yellow: goldenrod;
 $subtitle-size: 28px;
 
 .navbar {
-  height: 10vh;
+  height: 6vh;
   padding: 0px 20px;
   display:flex;
   align-items: center;
@@ -17,7 +17,7 @@ $subtitle-size: 28px;
   .navbar-section, .dropdown {
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     a, chip-link {
       color: $grey;
       text-decoration: none;

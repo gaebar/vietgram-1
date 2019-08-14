@@ -1,4 +1,5 @@
-![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)
+[![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://viet-gram.herokuapp.com/)
+
 
 # Vietgram
 https://viet-gram.herokuapp.com/

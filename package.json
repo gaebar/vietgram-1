@@ -1,5 +1,5 @@
 {
-  "name": "sei-project-03",
+  "name": "vietgram",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -53,6 +53,6 @@
     "spectre.css": "^0.5.8",
     "supertest": "^4.0.2"
   },
-  "repository": "git@github.com:davt49/sei-group-project.git",
-  "author": "MiaLearnsToCode <meroimia@gmail.com>"
+  "repository": "git@github.com:gaebar/vietgram.git",
+  "author": "Gaetano Barreca <hi@gaetanobarreca.dev>"
 }

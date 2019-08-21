@@ -70,3 +70,30 @@ A feature that was added later in the project was to allow users to follow other
  - Add private messages
  - Add Nodemailer to send an email to the users email which includes a link to verify the email they have registered with. The users are notified on the front-end by a flash message. 
  
+___
+
+## Install
+
+`brew install pipenv`
+
+`pipenv install`
+
+`yarn install`
+
+### Initialize the PostgreSQL database
+
+`yarn seed`
+
+### Run the app
+
+Start the backend server
+
+`yarn serve:back`
+
+Starts the frontend server
+
+`yarn serve:front`
+
+## Deploy
+
+With heroku, automatically deploys from new code is pushed to `master`

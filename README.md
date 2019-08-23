@@ -29,6 +29,9 @@ Vietgram was the third project during the General Assembly Software Engineering 
 We had just over a week to create an app that had a custom made backend by building a RESTful API and using React to render the front end. We created Vietgram, a social networking site for explorers, bringing together hidden gems reviews and comment all in one place. We also implemented a real-time chat widget with automatic translation into the local language. 
 
 My part in the project included building the models in Node.js, building the MongoDB database models, API endpoints and other frontend components.
+
+## Login
+![Login Screen](./src/assets/login.png)
 ___
 
 ## Process & Approach

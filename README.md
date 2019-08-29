@@ -4,7 +4,7 @@
 A social networking site for explorers, bringing together hidden gems reviews and comment all in one place.
 Visit the website at https://viet-gram.herokuapp.com/
 
-![Ga Logo](images/GA-logo.png)
+![Ga Logo](./screenshots/ga-logo.png)
 
 ### Timeframe & Team
 > 7 days, group project

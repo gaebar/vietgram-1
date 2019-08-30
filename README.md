@@ -2,19 +2,20 @@
 
 # SEI Project 3 - Vietgram
 A social networking site for explorers, bringing together hidden gems reviews and comment all in one place.
-Visit the website at https://viet-gram.herokuapp.com/
+
+**<a href="https://viet-gram.herokuapp.com/" target="_blank">Visit the Website</a>**
 
 ![Ga Logo](./screenshots/ga-logo.png)
 
-### Timeframe & Team
+### Timeframe
 > 7 days, group project
 
-Our team
-- Gaetano: https://github.com/gaebar
-- David:  https://github.com/davt49
-- Mia: https://github.com/MiaLearnsToCode
+### Team
+- Gaetano Barreca: https://github.com/gaebar
+- David Tsui:  https://github.com/davt49
+- Mia Meroi: https://github.com/MiaLearnsToCode
 
-### The Brief
+### Brief
 Build a MERN stack application in a group and to have automated tests for at least one RESTful resource on the back-end.
 
 ### Technologies

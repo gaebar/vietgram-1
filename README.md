@@ -1,4 +1,4 @@
-[![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://viet-gram.herokuapp.com/)
+![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://viet-gram.herokuapp.com/)
 
 # SEI Project 3 - Vietgram
 A social networking site for explorers, bringing together hidden gems reviews and comment all in one place.
@@ -8,6 +8,11 @@ Visit the website at https://viet-gram.herokuapp.com/
 
 ### Timeframe & Team
 > 7 days, group project
+
+Our team
+- Gaetano: https://github.com/gaebar
+- David:  https://github.com/davt49
+- Mia: https://github.com/MiaLearnsToCode
 
 ### The Brief
 Build a MERN stack application in a group and to have automated tests for at least one RESTful resource on the back-end.
@@ -24,7 +29,7 @@ Build a MERN stack application in a group and to have automated tests for at lea
 ___
 
 ## Project Summary
-Vietgram was the third project during the General Assembly Software Engineering Immersive course. The project was made in collaboration with David https://github.com/davt49 and Mia https://github.com/MiaLearnsToCode.
+Vietgram was the third project during the General Assembly Software Engineering Immersive course. The project was made in collaboration with David and Mia.
 
 We had just over a week to create an app that had a custom made backend by building a RESTful API and using React to render the front end. We created Vietgram, a social networking site for explorers, bringing together hidden gems reviews and comment all in one place. We also implemented a real-time chat widget with automatic translation into the local language. 
 
@@ -66,6 +71,11 @@ This was my first experience using Git workflows which provided some challenges 
 
 ### Wins
 A feature that was added later in the project was to allow users to follow other users. A follow route was added to the backend application which added a 'follows' array in the 'User' schema. An AJAX request is made from the frontend when a user follows another user. The current user is found in the database by the ID supplied with the AJAX request. The user being followed is then pushed to the array of 'follows' stored in the 'User' record. The user is then saved to the database before being populated via the User schema and returned as part of the response to the frontend. This response is used to update state and display the user has now been followed.
+
+## Key learnings
+Building a functioning full-stack app where requests can successfully display information on the front end (read) and data can be created/updated/deleted on the back end.
+
+Working with Github on a group project.
 
  ### Future Improvements
  - Give the change to the users to choose more then a language to chat

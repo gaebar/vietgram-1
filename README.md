@@ -233,7 +233,7 @@ function secureRoute(req, res, next) {
     })
     .catch(err => res.status(422).json(err))
 }
-,,,
+```
 
 The Seeds file contains all the creative content from user profiles, gems to chats that makes up the pre-filled portion of the site.
 
@@ -261,3 +261,189 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
 ```
 
 ## React.js
+
+Each RESTful path from the backend has its own component which manages the functions and requests on the page. Many have the handleChange and handleSubmit functions that are linked to elements going into render.
+
+### From the ChatShow component
+
+```javascript
+  handleChange(e) {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({ name, value })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    const comment = { [this.state.name]: this.state.value }
+    axios.post(`/api/chats/${this.props.match.params.chatId}/comments`, comment, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.getData())
+      .then(() => this.setState({ name: '', value: '' }))
+      .catch(err => console.log(err))
+  }
+```
+
+The filter Gems option is done almost entirely on React, using the category data from seeds, the Gems are filtered to show only the categories selected.
+
+```javascript
+  filterGems() {
+    const regexp = new RegExp(this.state.filterCategory, 'i')
+    return this.state.data.filter(gem => regexp.test(gem.category))
+  }
+```
+
+## Render example
+
+```javascript
+<div className="filter-nav">
+                  <label
+                    className={`chip ${this.state.checked === 0 ? 'bg-warning' : ''}`}
+                    htmlFor="tag-0">
+                    All
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 1 ? 'bg-warning' : ''}`}
+                    htmlFor="tag-1">
+                    Markets
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 2 ? 'bg-warning' : ''}`}
+                    htmlFor="tag-2">
+                    Temples
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 3 ? 'bg-warning' : ''}`}
+                    htmlFor="tag-3">
+                    Beaches
+                  </label>
+                  <label
+                    className={`chip ${this.state.checked === 4 ? 'bg-warning' : ''}`}
+                    htmlFor="tag-4">
+                    Landscapes
+                  </label>
+                </div>
+```
+
+The Gem component gets referenced directly into Gems and acts as a huge function outside of the component, where the design and references to the seeds file is managed. A crucial part of the whole app.
+
+
+```javascript
+import React from 'react'
+import { Link } from  'react-router-dom'
+
+const Gem = ({ image, location, user, _id }) => {
+  return (
+    <div className="column col-3 col-lg-6 col-sm-12 gem-card">
+
+      <div className="card gem-card">
+        <Link to={`/gems/${_id}`} >
+          <div className="card-image">
+            <img src={image} className="img-responsive"/>
+          </div>
+          <div className="card-header">
+            <div className="card-title h5">{location}</div>
+          </div>
+        </Link>
+        <div className="card-body">
+          <div className="card-subtitle text-gray">
+            <div className="chip">
+              <Link to={`/users/${user._id}`} aria-label="Close" role="button">
+                <img src={user.image} className="avatar avatar-sm" />
+                {user.username}
+                <span> {user.userType === 'Local' ? ' 🇻🇳 ' : ' ✈️ '} </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+export default Gem
+```
+
+Auth handles the log in and authentication for the user. Giving a token that expires after a set time when the user log in. Removes the token while logging out.
+
+```javascript
+class Auth {
+  static setToken(token) {
+    localStorage.setItem('token', token)
+  }
+
+  static getToken() {
+    return localStorage.getItem('token')
+  }
+
+  static logout() {
+    localStorage.removeItem('token')
+  }
+
+  static getPayload() {
+    const token = this.getToken()
+    if (!token) return false
+    const parts = token.split('.')
+    if (parts.length < 3) return false
+    return JSON.parse(atob(parts[1]))
+  }
+
+  static isAuthenticated() {
+    const payload = this.getPayload()
+    const now = Math.round(Date.now() / 1000)
+    return now < payload.exp
+  }
+}
+```
+
+Chat Show handles a lot of visual presentation that requires authentication and user information, the comments are presented in the profile's selected language.
+
+```javascript
+<div className="panel-body">
+                {this.state.chat.comments.map(comment => {
+                  return <div key={comment._id} className={`message ${Auth.getPayload().sub === comment.user._id ? 'user-message' : 'tile chat-message'}`}>
+                    <div className="tile-icon">
+                      <Link to={`/users/${comment.user._id}`}>
+                        <figure className="avatar"><img src={comment.user.image} alt="Avatar"/></figure>
+                      </Link>
+                    </div>
+                    <div className="tile-content">
+                      <p className="tile-title text-bold">
+                        {comment.user.username}
+                        <span> {comment.user.userType === 'Local' ? ' 🇻🇳 ' : '✈️ '} </span>
+                        <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
+                      </p>
+                      <div className={`${Auth.getPayload().sub === comment.user._id ? 'user-flex' : ''}`}>
+                        <p className={`${Auth.getPayload().sub === comment.user._id ? 'user-subtitle' : 'tile-subtitle'}`}>{comment.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                })
+                }
+              </div>
+```
+
+App.js contains the BrowserRouter which easily manages the switching of different routes.
+
+```javascript
+ <BrowserRouter>
+      <main>
+        <Navbar />
+        <Switch>
+          <Route path='/chats/:chatId' component={ChatShow}/>
+          <Route path='/chats' component={Chats}/>
+          <Route path='/gems/new' component={GemCreate}/>
+          <Route path='/gems/:gemId/edit' component={GemEdit}/>
+          <Route path='/gems/:gemId' component={GemsShow}/>
+          <Route path='/gems' component={Gems}/>
+          <Route path='/profile' component={Profile}/>
+          <Route path='/users/:userId' component={UserShow}/>
+          <Route path='/register' component={Register}/>
+          <Route exact path='/' component={Login} />
+        </Switch>
+        <Footer/>
+      </main>
+    </BrowserRouter>
+```

@@ -1,7 +1,7 @@
 [![Heroku](https://heroku-badge-gae.herokuapp.com/?app=viet-gram)](https://viet-gram.herokuapp.com/)
 
 # SEI Project 3 - Vietgram
-A social networking site for explorers, bringing together hidden gems reviews and comment all in one place.
+A social networking site for explorers, bringing together hidden gems reviews and comments, all in one place.
 
 **<a href="https://viet-gram.herokuapp.com/" target="_blank">Visit the Website</a>**
 
@@ -57,7 +57,11 @@ To begin the database, we created a seeds file to add the data for all the Chats
 
 
 #### Authentication
-In order to carry out the authentication process, we used BCrypt to hash passwords in the backend and store it in the database so that BCrypt could compare it against the password given when logging in. We also used JSON Web Token to embed JSON into an encrypted token. This was incorporated in our login and register controller and is sent to the client when the users successfully authenticate. 
+In order to carry out the authentication process, we used BCrypt to hash passwords in the backend and store it in the database so that BCrypt could compare it against the password given when logging in. We also used JSON Web Token to embed JSON into an encrypted token. This was incorporated in our login and register controller and is sent to the client when the users successfully authenticate.
+
+### Register
+
+![Register page](./screenshots/register-page.png)
 
 ### Frontend
 The frontend of the application was built using React.js. The application was styled using Spectre which was customised using Scss to add a branded style across the application.
@@ -68,6 +72,19 @@ Frontend setup
 * connecting API requests to the front end.
 
 ## Visuals
+
+### Hidden Gems page. Discover, like and display and delete comment.
+![Gems](./screenshots/gems.gif)
+
+## Post a new Gem, edit and delete
+![Post a new gem](./screenshots/new-gem.gif)
+
+## User page and chat with translate and emoji functions
+![profile and chat](./screenshots/gems.gif)
+
+## Others user page and how to follow them
+![profile and chat](./screenshots/follow.gif)
+
 
 ### Challenges
 This was my first experience using Git workflows which provided some challenges at the beginning of the project. As a team we developed all features on individual branches before merging with the 'development' branch. Conflicts had to be closely managed to ensure the correct version of the code was pushed to the 'development' branch. As a team we had a rigorous process which we followed as conflicts emerged. We also reduced the potential for conflicts by proactively managing task at the beginning of the day and understanding where conflicts could occur.

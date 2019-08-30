@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 4001
 
 // the NODE_ENV suffix to the database URL allow us to have 
 // multiple MongoDB databases, depending on the node environment.

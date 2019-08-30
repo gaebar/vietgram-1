@@ -73,7 +73,7 @@ Frontend setup
 
 ## Visuals
 
-### Hidden Gems page. Discover, like and display and delete comment.
+### Hidden Gems page. Show, like, post and delete comment.
 ![Gems](./screenshots/gems.gif)
 
 ## Post a new Gem, edit and delete

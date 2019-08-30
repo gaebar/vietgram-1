@@ -3,7 +3,7 @@
 # SEI Project 3 - Vietgram
 A social networking site for explorers, bringing together hidden gems reviews and comments, all in one place.
 
-**<a href="https://viet-gram.herokuapp.com/" target="_blank">Visit the Website</a>**
+[Visit the Website](https://viet-gram.herokuapp.com/)
 
 ![Ga Logo](./screenshots/ga-logo.png)
 

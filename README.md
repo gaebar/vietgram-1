@@ -36,8 +36,6 @@ We had just over a week to create an app that had a custom made backend by build
 
 My part in the project included building the models in Node.js, building the MongoDB database models, API endpoints and other frontend components.
 
-## Login
-![Login Screen](./screenshots/login.png)
 ___
 
 ## Process & Approach
@@ -59,6 +57,9 @@ To begin the database, we created a seeds file to add the data for all the Chats
 #### Authentication
 In order to carry out the authentication process, we used BCrypt to hash passwords in the backend and store it in the database so that BCrypt could compare it against the password given when logging in. We also used JSON Web Token to embed JSON into an encrypted token. This was incorporated in our login and register controller and is sent to the client when the users successfully authenticate.
 
+### Login
+![Login Screen](./screenshots/login.png)
+
 ### Register
 
 ![Register page](./screenshots/register-page.png)
@@ -73,24 +74,40 @@ Frontend setup
 
 ## Visuals
 
-### Hidden Gems page. Show, like, post and delete comment.
+### Hidden Gems page
+
+Show, like, post and delete comment.
+
 ![Gems](./screenshots/gems.gif)
 
-## Post a new Gem, edit and delete
+### Gem operations page
+
+Show, edit and delete gem.
+
 ![Post a new gem](./screenshots/new-gem.gif)
 
-## User page and chat with translate and emoji functions
+### User profile page
+
+View your own page and chat, with translate API and emoji widget.
+
 ![profile and chat](./screenshots/gems.gif)
 
-## Others user page and how to follow them
+### User page
+
+View user details and follow them.
+
 ![profile and chat](./screenshots/follow.gif)
 
 
 ### Challenges
-This was my first experience using Git workflows which provided some challenges at the beginning of the project. As a team we developed all features on individual branches before merging with the 'development' branch. Conflicts had to be closely managed to ensure the correct version of the code was pushed to the 'development' branch. As a team we had a rigorous process which we followed as conflicts emerged. We also reduced the potential for conflicts by proactively managing task at the beginning of the day and understanding where conflicts could occur.
+This was my first experience using Git workflows which provided some challenges at the beginning of the project. As a team we developed all features on individual branches before merging with the 'development' branch. Conflicts had to be closely managed to ensure the correct version of the code was pushed to the 'development' branch.
+
+As a team we had a rigorous process which we followed as conflicts emerged. We also reduced the potential for conflicts by proactively managing task at the beginning of the day and understanding where conflicts could occur.
 
 ### Wins
-A feature that was added later in the project was to allow users to follow other users. A follow route was added to the backend application which added a 'follows' array in the 'User' schema. An AJAX request is made from the frontend when a user follows another user. The current user is found in the database by the ID supplied with the AJAX request. The user being followed is then pushed to the array of 'follows' stored in the 'User' record. The user is then saved to the database before being populated via the User schema and returned as part of the response to the frontend. This response is used to update state and display the user has now been followed.
+A feature that was added later in the project was to allow users to follow other users. A follow route was added to the backend application which added a 'follows' array in the 'User' schema. An AJAX request is made from the frontend when a user follows another user. The current user is found in the database by the ID supplied with the AJAX request.
+
+The user being followed is then pushed to the array of 'follows' stored in the 'User' record. The user is then saved to the database before being populated via the User schema and returned as part of the response to the frontend. This response is used to update state and display the user has now been followed.
 
 ## Key learnings
 Building a functioning full-stack app where requests can successfully display information on the front end (read) and data can be created/updated/deleted on the back end.

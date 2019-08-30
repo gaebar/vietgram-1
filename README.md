@@ -147,10 +147,10 @@ Start the frontend server
 
 With heroku, automatically deploys when new code is pushed to `master`
 
-## Node.js
-The models and controllers are separated into 3 categories: chats, gems and users. With varying usages of the RESTful routes, since gems would require all the routes while chats and users require less.
+# Interesting code snippets
 
-Router keeps all the routes of the Backend in one place and so easier to manage.
+## Node.js
+The models and controllers are separated into 3 categories: chats, gems and users. There are many RESTful routes, since gems would require all the CRUD routes while chats and users require less. The Router class keeps all the routes of the Backend in one place and so easier to manage.
 
 ```javascript
 // gems route
@@ -173,7 +173,7 @@ router.route('/gems')
   .post(secure, gems.create)
 ```
 
-Error Handler gives all error messages a numbered status and can be applied for all the errors across the Backend.
+The ``Error Handler`` function gives all error messages a numbered status and can be applied for all the errors across the Backend.
 
 ```javascript
 function errorHandler(err, req, res, next) {
@@ -202,7 +202,7 @@ function errorHandler(err, req, res, next) {
 }
 ```
 
-Logger manages the console.log that informs you of all the backend RESTful requests that are happening while using the site.
+``Logger`` manages the console.log that informs you of all the backend RESTful requests that are happening while using the site.
 
 
 ``` javascript
@@ -211,7 +211,8 @@ function logger (req, res, next) {
   next()
 }
 ```
-Secure Route checks that the Authorization token is present and manages the JSON Web Token through a Promise.
+
+``Secure Route`` checks that the Authorization token is present and manages the JSON Web Token through a Promise.
 
 ```javascript
 function secureRoute(req, res, next) {
@@ -235,7 +236,7 @@ function secureRoute(req, res, next) {
 }
 ```
 
-The Seeds file contains all the creative content from user profiles, gems to chats that makes up the pre-filled portion of the site.
+The ``Seeds`` file contains all the creative content from user profiles, gems to chats that makes up the pre-filled portion of the site.
 
 ```javascript
 // require the models
@@ -260,7 +261,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, d
         },
 ```
 
-## React.js
+## React code
 
 Each RESTful path from the backend has its own component which manages the functions and requests on the page. Many have the handleChange and handleSubmit functions that are linked to elements going into render.
 
@@ -298,35 +299,35 @@ The filter Gems option is done almost entirely on React, using the category data
 
 ```javascript
 <div className="filter-nav">
-                  <label
-                    className={`chip ${this.state.checked === 0 ? 'bg-warning' : ''}`}
-                    htmlFor="tag-0">
-                    All
-                  </label>
-                  <label
-                    className={`chip ${this.state.checked === 1 ? 'bg-warning' : ''}`}
-                    htmlFor="tag-1">
-                    Markets
-                  </label>
-                  <label
-                    className={`chip ${this.state.checked === 2 ? 'bg-warning' : ''}`}
-                    htmlFor="tag-2">
-                    Temples
-                  </label>
-                  <label
-                    className={`chip ${this.state.checked === 3 ? 'bg-warning' : ''}`}
-                    htmlFor="tag-3">
-                    Beaches
-                  </label>
-                  <label
-                    className={`chip ${this.state.checked === 4 ? 'bg-warning' : ''}`}
-                    htmlFor="tag-4">
-                    Landscapes
-                  </label>
-                </div>
+  <label
+    className={`chip ${this.state.checked === 0 ? 'bg-warning' : ''}`}
+    htmlFor="tag-0">
+    All
+  </label>
+  <label
+    className={`chip ${this.state.checked === 1 ? 'bg-warning' : ''}`}
+    htmlFor="tag-1">
+    Markets
+  </label>
+  <label
+    className={`chip ${this.state.checked === 2 ? 'bg-warning' : ''}`}
+    htmlFor="tag-2">
+    Temples
+  </label>
+  <label
+    className={`chip ${this.state.checked === 3 ? 'bg-warning' : ''}`}
+    htmlFor="tag-3">
+    Beaches
+  </label>
+  <label
+    className={`chip ${this.state.checked === 4 ? 'bg-warning' : ''}`}
+    htmlFor="tag-4">
+    Landscapes
+  </label>
+</div>
 ```
 
-The Gem component gets referenced directly into Gems and acts as a huge function outside of the component, where the design and references to the seeds file is managed. A crucial part of the whole app.
+The ``Gem component`` gets referenced directly into Gems and acts as a huge function outside of the component, where the design and references to the seeds file is managed. A crucial part of the whole app.
 
 
 ```javascript
@@ -366,7 +367,7 @@ const Gem = ({ image, location, user, _id }) => {
 export default Gem
 ```
 
-Auth handles the log in and authentication for the user. Giving a token that expires after a set time when the user log in. Removes the token while logging out.
+``Auth`` handles the log in and authentication for the user. Giving a token that expires after a set time when the user log in. Removes the token while logging out.
 
 ```javascript
 class Auth {
@@ -398,52 +399,52 @@ class Auth {
 }
 ```
 
-Chat Show handles a lot of visual presentation that requires authentication and user information, the comments are presented in the profile's selected language.
+``Chat Show`` handles a lot of visual presentation that requires authentication and user information, the comments are presented in the profile's selected language.
 
 ```javascript
 <div className="panel-body">
-                {this.state.chat.comments.map(comment => {
-                  return <div key={comment._id} className={`message ${Auth.getPayload().sub === comment.user._id ? 'user-message' : 'tile chat-message'}`}>
-                    <div className="tile-icon">
-                      <Link to={`/users/${comment.user._id}`}>
-                        <figure className="avatar"><img src={comment.user.image} alt="Avatar"/></figure>
-                      </Link>
-                    </div>
-                    <div className="tile-content">
-                      <p className="tile-title text-bold">
-                        {comment.user.username}
-                        <span> {comment.user.userType === 'Local' ? ' 🇻🇳 ' : '✈️ '} </span>
-                        <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
-                      </p>
-                      <div className={`${Auth.getPayload().sub === comment.user._id ? 'user-flex' : ''}`}>
-                        <p className={`${Auth.getPayload().sub === comment.user._id ? 'user-subtitle' : 'tile-subtitle'}`}>{comment.text}</p>
-                      </div>
-                    </div>
-                  </div>
-                })
-                }
-              </div>
+  {this.state.chat.comments.map(comment => {
+    return <div key={comment._id} className={`message ${Auth.getPayload().sub === comment.user._id ? 'user-message' : 'tile chat-message'}`}>
+      <div className="tile-icon">
+        <Link to={`/users/${comment.user._id}`}>
+          <figure className="avatar"><img src={comment.user.image} alt="Avatar"/></figure>
+        </Link>
+      </div>
+      <div className="tile-content">
+        <p className="tile-title text-bold">
+          {comment.user.username}
+          <span> {comment.user.userType === 'Local' ? ' 🇻🇳 ' : '✈️ '} </span>
+          <small> {new Date(comment.createdAt).toLocaleString().slice(0,17)} </small>
+        </p>
+        <div className={`${Auth.getPayload().sub === comment.user._id ? 'user-flex' : ''}`}>
+          <p className={`${Auth.getPayload().sub === comment.user._id ? 'user-subtitle' : 'tile-subtitle'}`}>{comment.text}</p>
+        </div>
+      </div>
+    </div>
+  })
+  }
+</div>
 ```
 
-App.js contains the BrowserRouter which easily manages the switching of different routes.
+``App.js`` contains the BrowserRouter which easily manages the switching of different routes.
 
-```javascript
- <BrowserRouter>
-      <main>
-        <Navbar />
-        <Switch>
-          <Route path='/chats/:chatId' component={ChatShow}/>
-          <Route path='/chats' component={Chats}/>
-          <Route path='/gems/new' component={GemCreate}/>
-          <Route path='/gems/:gemId/edit' component={GemEdit}/>
-          <Route path='/gems/:gemId' component={GemsShow}/>
-          <Route path='/gems' component={Gems}/>
-          <Route path='/profile' component={Profile}/>
-          <Route path='/users/:userId' component={UserShow}/>
-          <Route path='/register' component={Register}/>
-          <Route exact path='/' component={Login} />
-        </Switch>
-        <Footer/>
-      </main>
-    </BrowserRouter>
+```html
+<BrowserRouter>
+  <main>
+    <Navbar />
+    <Switch>
+      <Route path='/chats/:chatId' component={ChatShow}/>
+      <Route path='/chats' component={Chats}/>
+      <Route path='/gems/new' component={GemCreate}/>
+      <Route path='/gems/:gemId/edit' component={GemEdit}/>
+      <Route path='/gems/:gemId' component={GemsShow}/>
+      <Route path='/gems' component={Gems}/>
+      <Route path='/profile' component={Profile}/>
+      <Route path='/users/:userId' component={UserShow}/>
+      <Route path='/register' component={Register}/>
+      <Route exact path='/' component={Login} />
+    </Switch>
+    <Footer />
+  </main>
+</BrowserRouter>
 ```

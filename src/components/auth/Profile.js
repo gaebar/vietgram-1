@@ -50,10 +50,10 @@ class Profile extends React.Component {
           <div className='user-page'>
             <div className="columns user-header">
               <div className="column col-5">
-                <img src={this.state.user.image} className="profile-pic"/>
+                <img src={this.state.user.image} className="profile-pic" />
               </div>
               <div className="column col-7">
-                <h2>{this.state.user.username} {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span> }</h2>
+                <h2>{this.state.user.username} {this.state.user.userType === 'Tourist' ? <span>✈️ </span> : <span>🇻🇳 </span>}</h2>
                 <br />
                 <p>{this.state.user.text}</p>
                 <div className='user-info'>
@@ -70,7 +70,7 @@ class Profile extends React.Component {
                               return <div key={follower.user._id} className="tile">
                                 <Link to={`/users/${follower.user._id}`}>
                                   <div className="tile-icon">
-                                    <figure className="avatar"><img src={follower.user.image} alt="Avatar"/>
+                                    <figure className="avatar"><img src={follower.user.image} alt="Avatar" />
                                       <p className="tile-title text-bold">{follower.user.username}</p>
                                     </figure>
                                   </div>
@@ -98,7 +98,7 @@ class Profile extends React.Component {
               </div>
             </div>
             <div>
-              <hr className="divider"/>
+              <hr className="divider" />
               <div className="columns col-oneline profile-nav">
                 <div className="column col-5">
                   <Link to="/gems">Hidden gems</Link>

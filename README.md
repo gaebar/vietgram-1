@@ -16,7 +16,7 @@ A social networking site for explorers, bringing together hidden gems reviews an
 - Mia Meroi: https://github.com/MiaLearnsToCode
 
 ### Brief
-Build a MERN stack application in a group and to have automated tests for at least one RESTful resource on the back-end.
+Build a MERN (MongoDB, Express, React, Node) stack application in a group and to have automated tests for at least one RESTful resource on the back-end.
 
 ### Technologies
 - HTML5 & ES6 JavaScript
@@ -37,7 +37,7 @@ We had just over a week to create an app that had a custom made backend by build
 My part in the project included building the models in Node.js, building the MongoDB database models, API endpoints and other frontend components.
 
 ## Login
-![Login Screen](./src/assets/login.png)
+![Login Screen](./screenshots/login.png)
 ___
 
 ## Process & Approach
@@ -67,6 +67,8 @@ Frontend setup
 * setting up forms
 * connecting API requests to the front end.
 
+## Visuals
+
 ### Challenges
 This was my first experience using Git workflows which provided some challenges at the beginning of the project. As a team we developed all features on individual branches before merging with the 'development' branch. Conflicts had to be closely managed to ensure the correct version of the code was pushed to the 'development' branch. As a team we had a rigorous process which we followed as conflicts emerged. We also reduced the potential for conflicts by proactively managing task at the beginning of the day and understanding where conflicts could occur.
 
@@ -88,26 +90,26 @@ ___
 
 ## Install
 
-`brew install pipenv`
-
-`pipenv install`
-
 `yarn install`
 
-### Initialize the PostgreSQL database
+### Initialize the MongoDB database
 
 `yarn seed`
 
 ### Run the app
 
+Start the MongoDB Daemon (Background Process):
+
+`mongod`
+
 Start the backend server
 
 `yarn serve:back`
 
-Starts the frontend server
+Start the frontend server
 
 `yarn serve:front`
 
-## Deploy
+## Deployment
 
-With heroku, automatically deploys from new code is pushed to `master`
+With heroku, automatically deploys when new code is pushed to `master`

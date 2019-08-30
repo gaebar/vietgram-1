@@ -246,19 +246,23 @@ const Gem = require('../models/gem')
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, db) => {
   if (err) console.log(err)
-  db.dropDatabase()
-    .then(() => {
-      return User.create([
-        {
-          username: 'jennypham',
-          email: 'jennypham@email',
-          password: 'pass',
-          passwordConfirmation: 'pass',
-          image: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Midu_-_Summer_2012_%28Explored_1_-_May_24th%29_cropped.jpg',
-          lang: 'vi',
-          text: 'I know places yeah.',
-          userType: 'Local'
-        },
+    db.dropDatabase()
+      .then(() => {
+        return User.create([
+          {
+            username: 'jennypham',
+            email: 'jennypham@email',
+            password: 'pass',
+            passwordConfirmation: 'pass',
+            image: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Midu_-_Summer_2012_%28Explored_1_-_May_24th%29_cropped.jpg',
+            lang: 'vi',
+            text: 'I know places yeah.',
+            userType: 'Local'
+          },
+          //... adds more entities to the database
+        ])
+      })
+})
 ```
 
 ## React code
@@ -337,7 +341,6 @@ import { Link } from  'react-router-dom'
 const Gem = ({ image, location, user, _id }) => {
   return (
     <div className="column col-3 col-lg-6 col-sm-12 gem-card">
-
       <div className="card gem-card">
         <Link to={`/gems/${_id}`} >
           <div className="card-image">
@@ -359,7 +362,6 @@ const Gem = ({ image, location, user, _id }) => {
           </div>
         </div>
       </div>
-
     </div>
   )
 }
@@ -428,7 +430,7 @@ class Auth {
 
 ``App.js`` contains the BrowserRouter which easily manages the switching of different routes.
 
-```html
+```javascript
 <BrowserRouter>
   <main>
     <Navbar />

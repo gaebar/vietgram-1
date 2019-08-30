@@ -1,4 +1,4 @@
-![Heroku](http://heroku-badge.herokuapp.com/?app=viet-gram)](https://viet-gram.herokuapp.com/)
+[![Heroku](https://heroku-badge-gae.herokuapp.com/?app=viet-gram)](https://viet-gram.herokuapp.com/)
 
 # SEI Project 3 - Vietgram
 A social networking site for explorers, bringing together hidden gems reviews and comment all in one place.

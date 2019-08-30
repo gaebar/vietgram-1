@@ -41,12 +41,12 @@ ___
 ## Process & Approach
 
 ### Task Management and Communication
-The project was delivered in a group of three. We managed the project with an agile methodology with a clear timeframe for us to deliver as much of the scope as possible. To assist this process we used an Kanban Board in the form of Trello to plan and manage our task, utilising daily stand-ups to track progress and understand blockers.
+The project was delivered in a group of three. We managed the project with an agile methodology with a clear timeframe for us to deliver as much of the scope as possible. To assist this process we used an Kanban Board in the form of Trello to plan and manage our task, utilizing daily stand-ups to track progress and understand blockers.
 
-To start the project wireframes were produced to capture a high level user journey and the layout of the application prior to any development taking place. This gave us a clear understanding of how each page would interact and a basic layout that we could apply consistently across the application. David, Mia and I were happy to share the whole experience moving from back-end to front-end avoinding give a specific task for each other for the 7 days project.
+To start the project wireframes were produced to capture a high level user journey and the layout of the application prior to any development taking place. This gave us a clear understanding of how each page would interact and a basic layout that we could apply consistently across the application. David, Mia and I were happy to share the whole experience moving from back-end to front-end avoiding give a specific task for each other for the 7 days project.
 
 ### Development
-Planning was an integral part the process as our focus was to produce a backend API which could corehently work in the React front-end. We first began creating wireframes to work out this structure and general content placement of the website. It was clear our application would revolve around three elements: Users, Chats and Gems. We established early that the user could choose to be a local or a traveler and also chosse between two language to use: English or Vietnames.
+Planning was an integral part the process as our focus was to produce a backend API which could coherently work in the React front-end. We first began creating wireframes to work out this structure and general content placement of the website. It was clear our application would revolve around three elements: Users, Chats and Gems. We established early that the user could choose to be a local or a traveler and also choose between two language to use: English or Vietnamese.
 
 ### Backend
 The backend of the application was built using Express.js with a NoSQL MongoDB database. Models and Controllers were created for 'Gems', 'Chats' and 'User'. For both 'Gems' and 'Chats' CRUD routes were created to allow users to update 'Gems' and 'Chats' they had created. The User route included Register and Login to allow a user to create a profile to view and manage their 'Gems' or 'Chats'. User follow functionality was later added to the 'User' route.
@@ -65,7 +65,7 @@ In order to carry out the authentication process, we used BCrypt to hash passwor
 ![Register page](./screenshots/register-page.png)
 
 ### Frontend
-The frontend of the application was built using React.js. The application was styled using Spectre which was customised using Scss to add a branded style across the application.
+The frontend of the application was built using React.js. The application was styled using Spectre which was customized using Scss to add a branded style across the application.
 
 Frontend setup
 * setting up components and pages
@@ -90,14 +90,13 @@ Show, edit and delete gem.
 
 View your own page and chat, with translate API and emoji widget.
 
-![profile and chat](./screenshots/gems.gif)
+![profile and chat](./screenshots/profile-and-chat.gif)
 
 ### User page
 
 View user details and follow them.
 
 ![profile and chat](./screenshots/follow.gif)
-
 
 ### Challenges
 This was my first experience using Git workflows which provided some challenges at the beginning of the project. As a team we developed all features on individual branches before merging with the 'development' branch. Conflicts had to be closely managed to ensure the correct version of the code was pushed to the 'development' branch.
@@ -147,3 +146,118 @@ Start the frontend server
 ## Deployment
 
 With heroku, automatically deploys when new code is pushed to `master`
+
+## Node.js
+The models and controllers are separated into 3 categories: chats, gems and users. With varying usages of the RESTful routes, since gems would require all the routes while chats and users require less.
+
+Router keeps all the routes of the Backend in one place and so easier to manage.
+
+```javascript
+// gems route
+router.route('/gems/:gemId/likes')
+  .get(secure, gems.like)
+
+router.route('/gems/:gemId/comments/:commentId')
+  .delete(secure, gems.commentDelete)
+
+router.route('/gems/:gemId/comments')
+  .post(secure, gems.commentCreate)
+
+router.route('/gems/:gemId')
+  .get(secure, gems.show)
+  .put(secure, gems.edit)
+  .delete(secure, gems.delete)
+
+router.route('/gems')
+  .get(secure, gems.index)
+  .post(secure, gems.create)
+```
+
+Error Handler gives all error messages a numbered status and can be applied for all the errors across the Backend.
+
+```javascript
+function errorHandler(err, req, res, next) {
+  if (err.message === 'Unauthorized') {
+    return res.status(401).json({ message: 'Unauthorized' })
+  }
+  if (err.name === 'TokenExpiredError') {
+    return res.status(401).json({ message: 'Token expired' })
+  }
+  if (err.name === 'NotFound') {
+    return res.status(404).json({ message: 'Not Found' })
+  }
+  if (err.name === 'ValidationError') {
+
+    const errors = {}
+    for (const field in err.errors) {
+      errors[field] = err.errors[field].message
+    }
+    err.errors = errors
+
+    return res.status(422).json({ message: 'Unprocessable Entity', errors })
+  }
+
+  res.status(500).json({ message: 'Internal Server Error' })
+  next(err)
+}
+```
+
+Logger manages the console.log that informs you of all the backend RESTful requests that are happening while using the site.
+
+
+``` javascript
+function logger (req, res, next) {
+  console.log(`${req.method} Request to ${req.url}`)
+  next()
+}
+```
+Secure Route checks that the Authorization token is present and manages the JSON Web Token through a Promise.
+
+```javascript
+function secureRoute(req, res, next) {
+  if (!req.headers.authorization) return res.status(401).json({ message: 'Unauthorized' })
+
+  const token = req.headers.authorization.replace('Bearer ', '')
+
+  new Promise((resolve, reject) => {
+    jwt.verify(token, secret, (err, payload) => {
+      if (err) return reject(err)
+      return resolve(payload)
+    })
+  })
+    .then(payload => User.findById(payload.sub))
+    .then(user => {
+      if (!user) return res.status(401).json({ message: 'Unauthorized' })
+      req.currentUser = user
+      next()
+    })
+    .catch(err => res.status(422).json(err))
+}
+,,,
+
+The Seeds file contains all the creative content from user profiles, gems to chats that makes up the pre-filled portion of the site.
+
+```javascript
+// require the models
+const User = require('../models/user')
+const Chat = require('../models/chat')
+const Gem = require('../models/gem')
+
+mongoose.connect(dbURI, { useNewUrlParser: true, useCreateIndex: true }, (err, db) => {
+  if (err) console.log(err)
+  db.dropDatabase()
+    .then(() => {
+      return User.create([
+        {
+          username: 'jennypham',
+          email: 'jennypham@email',
+          password: 'pass',
+          passwordConfirmation: 'pass',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/Midu_-_Summer_2012_%28Explored_1_-_May_24th%29_cropped.jpg',
+          lang: 'vi',
+          text: 'I know places yeah.',
+          userType: 'Local'
+        },
+```
+
+## React.js

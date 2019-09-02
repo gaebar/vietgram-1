@@ -18,7 +18,7 @@ A social networking site for explorers, bringing together hidden gems reviews an
 ### Brief
 Build a MERN (MongoDB, Express, React, Node) stack application in a group and to have automated tests for at least one RESTful resource on the back-end.
 
-### Technologies
+### Tech Stack
 - HTML5 & ES6 JavaScript
 - React.js, Webpack, Babel, Axios & Yarn
 - CSS3, CSS Animations, Sass CSS & Spectre
@@ -107,17 +107,6 @@ As a team we had a rigorous process which we followed as conflicts emerged. We a
 A feature that was added later in the project was to allow users to follow other users. A follow route was added to the backend application which added a 'follows' array in the 'User' schema. An AJAX request is made from the frontend when a user follows another user. The current user is found in the database by the ID supplied with the AJAX request.
 
 The user being followed is then pushed to the array of 'follows' stored in the 'User' record. The user is then saved to the database before being populated via the User schema and returned as part of the response to the frontend. This response is used to update state and display the user has now been followed.
-
-## Key learnings
-Building a functioning full-stack app where requests can successfully display information on the front end (read) and data can be created/updated/deleted on the back end.
-
-Working with Github on a group project.
-
- ### Future Improvements
- - Give the change to the users to choose more then a language to chat
- - Add the use of emojis on the comments area
- - Add private messages
- - Add Nodemailer to send an email to the users email which includes a link to verify the email they have registered with. The users are notified on the front-end by a flash message. 
  
 ___
 
@@ -146,6 +135,8 @@ Start the frontend server
 ## Deployment
 
 With heroku, automatically deploys when new code is pushed to `master`
+
+---
 
 # Interesting code snippets
 
@@ -450,3 +441,14 @@ class Auth {
   </main>
 </BrowserRouter>
 ```
+___
+## Key learnings
+Building a functioning full-stack app where requests can successfully display information on the front end (read) and data can be created/updated/deleted on the back end.
+
+Working with Github on a group project.
+
+ ### Future Improvements
+ - Give the change to the users to choose more then a language to chat
+ - Add the use of emojis on the comments area
+ - Add private messages
+ - Add Nodemailer to send an email to the users email which includes a link to verify the email they have registered with. The users are notified on the front-end by a flash message. 
